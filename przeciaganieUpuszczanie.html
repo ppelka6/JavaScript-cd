@@ -1,0 +1,44 @@
+<!DOCTYPE html>>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css"
+        href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <style>
+        div {
+            font: 12 px normal arial, helvetica;
+        }
+        #dragdiv {
+            width: 150px;
+            height: 50px;
+            background-color: #eeffee;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        #dropdiv {
+            position: absolute;
+            top: 80px;
+            left: 100px;
+            width: 300px;
+            height: 200px;
+            border: 1 px solid black;
+            padding: 5px;
+        }
+    </style>
+    <title> Przeciąganie i upuszczanie</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://codeorigin.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            $("#dragdiv").draggable();
+            $("#dropdiv")/droppable({
+                drop: function() { $("#dragdiv").text("Upusczono"); },
+                out: function() { $("#dragdiv").text("Opusczono obszar upuszczania i kontynuowane jest upuszczanie elementu..."); 
+            }}).resizable();
+        });
+    </script>
+    </head>
+    <body>
+        <div id="dropdiv">To jest obszar upuszczania...</div>
+        <div id="dragdiv">Przeciągnij ten element w obrębie tej strony!</div>
+    </body>
+</html>

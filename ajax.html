@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Przesyłanie formularza opartego na technologii Ajax</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                function checkFields() {
+                    return ($("#name").val() && $("#email").val());
+                    }
+                    $("#form1").submit(function() {
+                        if(checkFields()) {
+                            $.post('test.php', $("#form1").serialize(), function(data) {
+                                $("#div1").html(data);
+                            }
+                            );
+                     }
+                    else alert("Wypełnij pola podając imię i nazwisko oraz email!");
+                    return false;
+                    });
+                });
+        </script>
+    </head>
+        <body>
+            <form id="form1">
+                Imię i nazwisko<input type="text" name="name" id="name"><br />
+                Adres email<input type="text" name="email" id="email"><br />
+                <input type="submit" name="submit" id="submit" value="Wyślij formularz">
+            </form>
+            <div id="div1"></div>
+        </body>
+</html>
